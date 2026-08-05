@@ -1,0 +1,33 @@
+import { createFileRoute } from "@tanstack/react-router";
+
+export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Nievune — Stream Widgets & Digital Downloads" },
+      {
+        name: "description",
+        content:
+          "Nievune sells clean, customizable StreamElements widgets: chat overlays, last follow/sub notifications and matching bundles.",
+      },
+      { property: "og:title", content: "Nievune — Stream Widgets & Digital Downloads" },
+      {
+        property: "og:description",
+        content:
+          "Chat overlays, activity notifications and bundles for streamers. Browse the catalog, add to cart and checkout.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
+  component: Index,
+});
+
+function Index() {
+  return (
+    <iframe
+      src="/store/index.html"
+      title="Nievune store"
+      className="h-screen w-full border-0"
+    />
+  );
+}
