@@ -1,9 +1,0 @@
-window.NIEVUNE_CONFIG = {
-  // Copy this file to config.js and fill the values you need.
-  supabaseUrl: "https://your-project.supabase.co",
-  supabaseAnonKey: "your-public-anon-key",
-  authRedirectUrl: "https://your-domain.com/store/index.html",
-  siteName: "Nievune",
-  currency: "USD",
-  socials: { twitch: "https://twitch.tv/yourname", x: "https://x.com/yourname" }
-};
