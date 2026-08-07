@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow,noarchive" />
+  <meta name="description" content="Private Nievune shop manager." />
+  <title>Nievune — Private Shop Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="admin-body">
+  <header class="admin-private-header">
+    <div class="container admin-private-inner">
+      <a class="wordmark" href="index.html">Nievune</a>
+      <span>Private shop manager</span>
+      <a class="small-button" href="index.html">View store</a>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <div class="container admin-shell">
+      <section class="auth-panel admin-card" id="authPanel">
+        <span class="section-label">PRIVATE ACCESS</span>
+        <h1>Owner sign in</h1>
+        <p id="setupMessage">Only the shop owner can manage products. The first account created after Supabase setup becomes the permanent store administrator.</p>
+        <form id="authForm" class="admin-form auth-form">
+          <label><span>Email</span><input type="email" name="email" required autocomplete="email" /></label>
+          <label><span>Password</span><input type="password" name="password" required minlength="6" autocomplete="current-password" /></label>
+          <div class="auth-actions">
+            <button class="purchase-button auth-primary" type="submit">Sign in</button>
+            <button class="small-button" type="button" data-auth-signup>Create owner account</button>
+          </div>
+          <p class="admin-status">Status: <span id="authStatus">Checking configuration...</span></p>
+        </form>
+      </section>
+
+      <section id="dashboard" class="dashboard" hidden>
+        <div class="dashboard-top admin-card">
+          <div>
+            <span class="section-label">OWNER DASHBOARD</span>
+            <h2>Manage products</h2>
+            <p>Add new widgets, update prices, paste checkout links, and hide products without editing the storefront code.</p>
+          </div>
+          <div class="dashboard-actions">
+            <button class="small-button is-primary" type="button" id="newProductButton">New product</button>
+            <button class="small-button" type="button" id="signOutButton">Sign out</button>
+          </div>
+        </div>
+
+        <div class="admin-grid">
+          <section class="admin-card">
+            <div class="admin-panel-head"><h3>Product form</h3><p>Create or edit a listing.</p></div>
+            <form id="productForm" class="admin-form product-form">
+              <input type="hidden" name="id" />
+              <div class="form-grid two">
+                <label><span>Title</span><input name="title" required /></label>
+                <label><span>Slug</span><input name="slug" required /></label>
+              </div>
+              <div class="form-grid two">
+                <label><span>Badge</span><input name="badge" placeholder="CHAT WIDGET" /></label>
+                <label><span>Category</span><input name="category" placeholder="Minimalist Collection" /></label>
+              </div>
+              <div class="form-grid two">
+                <label>
+                  <span>Shop section</span>
+                  <select name="section">
+                    <option value="chat-widgets">Chat widgets</option>
+                    <option value="notifications">Notifications</option>
+                    <option value="bundles">Bundles</option>
+                  </select>
+                </label>
+                <label><span>Sort order</span><input type="number" name="sort_order" min="0" step="1" value="0" /></label>
+              </div>
+              <label><span>Short description</span><input name="short_description" required /></label>
+              <label><span>Full description</span><textarea name="description" rows="4"></textarea></label>
+              <div class="form-grid three">
+                <label><span>Price</span><input type="number" min="0" step="0.01" name="price" required /></label>
+                <label><span>Compare-at price</span><input type="number" min="0" step="0.01" name="compare_at_price" /></label>
+                <label><span>Currency</span><input name="currency" value="USD" /></label>
+              </div>
+              <label>
+                <span>Preview style</span>
+                <select name="preview_kind">
+                  <option value="zigzag-chat">Zigzag Chat</option>
+                  <option value="minimalist-chat">Minimalist Chat</option>
+                  <option value="minimalist-notification">Minimalist Notification</option>
+                  <option value="minimalist-bundle">Minimalist Bundle</option>
+                  <option value="image-only">Uploaded image</option>
+                </select>
+              </label>
+              <label><span>Checkout URL</span><input name="purchase_url" placeholder="Paste link later" /></label>
+              <label><span>Video URL</span><input name="video_embed" placeholder="YouTube or Vimeo URL" /></label>
+              <label><span>Preview image URL</span><input name="preview_image" placeholder="Relative path, URL, or uploaded data" /></label>
+              <label><span>Upload preview image</span><input type="file" accept="image/*" id="previewUpload" /></label>
+              <label><span>Tags, separated by commas</span><input name="tags" /></label>
+              <label><span>Features, one per line</span><textarea name="features" rows="5"></textarea></label>
+              <label class="checkbox-row"><input type="checkbox" name="is_active" checked /><span>Visible in the store</span></label>
+              <div class="form-actions">
+                <button class="purchase-button admin-save" type="submit">Save product</button>
+                <button class="small-button" type="button" id="resetFormButton">Clear form</button>
+              </div>
+            </form>
+          </section>
+
+          <section class="admin-card">
+            <div class="admin-panel-head"><h3>Current products</h3><p>Select a product to edit it.</p></div>
+            <div id="productList" class="admin-list" aria-live="polite"></div>
+          </section>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="manage.js"></script>
+</body>
+</html>

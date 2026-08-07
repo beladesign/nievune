@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Nievune digital widgets for streamers — chat overlays, notifications, and matching bundles." />
+  <title>Nievune — Stream Widgets & Digital Downloads</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#catalog">Skip to products</a>
+
+  <div class="announcement-bar">
+    <div class="container announcement-inner public-only-announcement">
+      <span>Digital products for streamers</span>
+      <span>Customizable StreamElements widgets</span>
+      <span>Instant digital delivery after checkout setup</span>
+    </div>
+  </div>
+
+  <header class="market-header">
+    <div class="container market-header-main">
+      <a class="wordmark" href="index.html" aria-label="Nievune home">Nievune</a>
+      <form class="global-search" id="globalSearchForm" role="search">
+        <label class="sr-only" for="globalSearchInput">Search products</label>
+        <input id="globalSearchInput" type="search" placeholder="Search chat widgets, notifications, bundles..." autocomplete="off" />
+        <button type="submit" aria-label="Search">⌕</button>
+      </form>
+      <nav class="header-links" aria-label="Store navigation">
+        <a href="#faq">Help</a>
+        <button class="icon-button" type="button" aria-label="Favorites">♡</button>
+      </nav>
+      <button class="mobile-menu-button" type="button" aria-expanded="false" aria-controls="mobileMenu" data-menu-toggle>☰</button>
+    </div>
+    <div class="category-nav-wrap">
+      <nav class="container category-nav" aria-label="Product categories">
+        <button type="button" data-category="all" class="is-active">All products</button>
+        <button type="button" data-category="chat-widgets">Chat widgets</button>
+        <button type="button" data-category="notifications">Notifications</button>
+        <button type="button" data-category="bundles">Bundles</button>
+        <button type="button" data-category="minimalist">Minimalist collection</button>
+      </nav>
+    </div>
+    <nav class="mobile-menu" id="mobileMenu" hidden>
+      <button type="button" data-category="all">All products</button>
+      <button type="button" data-category="chat-widgets">Chat widgets</button>
+      <button type="button" data-category="notifications">Notifications</button>
+      <button type="button" data-category="bundles">Bundles</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="shop-banner-section">
+      <div class="container">
+        <div class="shop-cover" aria-hidden="true">
+          <span class="cover-spark cover-spark-1">✦</span>
+          <span class="cover-spark cover-spark-2">✧</span>
+          <span class="cover-orbit"></span>
+        </div>
+        <div class="shop-profile">
+          <img src="assets/mascot-icon.webp" alt="Nievune sheep logo" class="shop-avatar" />
+          <div class="shop-profile-copy">
+            <div class="shop-title-line">
+              <h1>Nievune</h1>
+              <span class="shop-badge">Digital widget shop</span>
+            </div>
+            <p>Clean, customizable StreamElements widgets designed for streamers who want a polished visual identity.</p>
+            <div class="shop-meta">
+              <span>★ New shop</span>
+              <span>Goiânia, Brazil</span>
+              <span>Digital downloads</span>
+            </div>
+          </div>
+          <div class="shop-actions">
+            <a class="small-button" href="#about">About</a>
+            <a class="small-button is-primary" href="#catalog">Browse products</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="catalog-section" id="catalog">
+      <div class="container catalog-layout">
+        <aside class="catalog-sidebar" aria-label="Shop sections">
+          <div class="sidebar-block">
+            <h2>Shop sections</h2>
+            <button class="sidebar-filter is-active" type="button" data-category="all"><span>All products</span><b data-count="all">4</b></button>
+            <button class="sidebar-filter" type="button" data-category="chat-widgets"><span>Chat widgets</span><b data-count="chat-widgets">2</b></button>
+            <button class="sidebar-filter" type="button" data-category="notifications"><span>Notifications</span><b data-count="notifications">1</b></button>
+            <button class="sidebar-filter" type="button" data-category="bundles"><span>Bundles</span><b data-count="bundles">1</b></button>
+          </div>
+          <div class="sidebar-block compact-info">
+            <h2>Delivery</h2>
+            <p>Digital files only. Purchase links will be added once checkout is connected.</p>
+          </div>
+          <div class="sidebar-block compact-info">
+            <h2>Product previews</h2>
+            <p>Open any listing to select preview images, compare layouts, and view the reserved demo-video area.</p>
+          </div>
+        </aside>
+
+        <div class="catalog-content">
+          <div class="catalog-toolbar">
+            <div>
+              <h2>Products</h2>
+              <p><span id="resultCount">4</span> items</p>
+            </div>
+            <div class="toolbar-controls">
+              <button class="filter-mobile-button" type="button" data-toggle-sidebar>Filters</button>
+              <label>
+                <span>Sort by</span>
+                <select id="sortSelect">
+                  <option value="recommended">Recommended</option>
+                  <option value="price-asc">Lowest price</option>
+                  <option value="price-desc">Highest price</option>
+                  <option value="name">Name</option>
+                </select>
+              </label>
+            </div>
+          </div>
+          <div class="active-filter-row" id="activeFilterRow" hidden>
+            <span id="activeFilterLabel"></span>
+            <button type="button" data-clear-filter>Clear</button>
+          </div>
+          <div id="productGrid" class="market-product-grid" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-shop" id="about">
+      <div class="container about-grid">
+        <div>
+          <span class="section-label">ABOUT NIEVUNE</span>
+          <h2>Small shop, carefully designed products.</h2>
+        </div>
+        <p>Nievune focuses on digital products for streaming. The store starts with chat widgets and activity notifications, while the private manager is prepared for future releases.</p>
+      </div>
+    </section>
+
+    <section class="faq-section" id="faq">
+      <div class="container faq-grid">
+        <div>
+          <span class="section-label">FAQ</span>
+          <h2>Before you buy</h2>
+        </div>
+        <div class="faq-list">
+          <details open><summary>Are these physical products?</summary><p>No. All items are digital widgets created for StreamElements.</p></details>
+          <details><summary>Can I see the widget before buying?</summary><p>Yes. Open a product to select its preview images, compare the available layouts, and later watch the demo video.</p></details>
+          <details><summary>Can new products be added without coding?</summary><p>Yes. The private manager allows the shop owner to add, edit, hide, or delete products after Supabase is connected.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="market-footer">
+    <div class="container footer-inner">
+      <div><strong>Nievune</strong><span>Digital widgets for streamers.</span></div>
+      <nav><a href="#catalog">Products</a><a href="#about">About</a><a href="#faq">FAQ</a></nav>
+    </div>
+  </footer>
+
+  <dialog class="product-modal" id="productModal">
+    <button class="modal-close" type="button" data-close-modal aria-label="Close">×</button>
+    <div class="modal-layout">
+      <div class="modal-gallery">
+        <div id="modalPreview" class="modal-preview"></div>
+        <div id="modalThumbnails" class="modal-thumbnails" aria-label="Select product preview"></div>
+        <div class="modal-video-block" id="modalVideoBlock">
+          <div class="modal-video-label"><strong>Demo video</strong><span>Space reserved for your video</span></div>
+          <div id="modalVideo" class="video-placeholder"><span>Video coming soon</span></div>
+        </div>
+      </div>
+      <div class="modal-details">
+        <span id="modalBadge" class="listing-badge"></span>
+        <h2 id="modalTitle"></h2>
+        <div class="modal-price-line"><strong id="modalPrice"></strong><small id="modalCompare"></small></div>
+        <p id="modalDescription"></p>
+        <div id="modalLayoutChoice" class="layout-choice" hidden>
+          <span>Preview layout</span>
+          <div>
+            <button type="button" data-notification-layout="combined" class="is-active">Combined card</button>
+            <button type="button" data-notification-layout="separate">Separate cards</button>
+          </div>
+          <small>Both layouts are included in the product.</small>
+        </div>
+        <ul id="modalFeatures"></ul>
+        <a id="modalBuy" class="purchase-button" href="#">Checkout link will be added later</a>
+        <div class="digital-note"><b>Digital download</b><span>No physical item will be shipped.</span></div>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="storefront.js"></script>
+</body>
+</html>
